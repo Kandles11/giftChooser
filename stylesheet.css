@@ -4,30 +4,31 @@ body{
 }
 
 .welcome {
-  height: 120px;
+
   width: 75%;
 }
 
 .initButtons {
-  height: 50px;
+
   width: 75%;
 }
 
 .newPerson {
-  height: 50px;
+
   width: 75%;
 
   display: none;
 }
 
 .existingPersonRadio {
-  height: 75px;
+
   width: 75%;
   display: none;
 }
 
 .existingPersonBox {
-  height: 50px;
+
   width: 75%;
   background-color: magenta;
+  display: none;
 }

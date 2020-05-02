@@ -1,3 +1,4 @@
+var people = []
 function newClicked() {
   var x = document.getElementById("newPerson");
   var y = document.getElementById("existingPersonRadio");
@@ -19,3 +20,13 @@ function existingClicked() {
     y.style.display = "none";
   }
 }
+
+function createPerson() {
+  event.preventDefault()
+  people.push(person = {
+    name: document.getElementById("newName").value
+  })
+  document.getElementById("newName").value='';
+  console.log(people)
+}
+
