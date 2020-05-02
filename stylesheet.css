@@ -3,6 +3,7 @@ body{
   flex-direction: column;
   align-items: center;
   font-family: 'Open Sans', sans-serif;
+  color-scheme: light dark;
 }
 
 .welcome {
@@ -43,6 +44,7 @@ body{
 
 @media (prefers-color-scheme: dark) {
   body{
-    background-color: black; 
+    background-color: black;
     color: white;
   }
+}
