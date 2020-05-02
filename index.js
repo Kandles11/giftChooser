@@ -17,6 +17,7 @@ function existingClicked() {
   var buttonsDiv = document.getElementById("initButtons");
   var newDiv = document.getElementById("newPerson");
   var existingDiv = document.getElementById("existingPersonRadio");
+
   if (existingDiv.style.display == "none") {
     existingDiv.style.display = "block";
     newDiv.style.display = "none";
