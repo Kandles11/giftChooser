@@ -6,6 +6,10 @@ body{
   color-scheme: light dark;
 }
 
+form{
+  padding: 0px;
+}
+
 .welcome {
   width: 75%;
   text-align: center;

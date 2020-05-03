@@ -1,4 +1,5 @@
 var people = []
+
 function newClicked() {
   var buttonsDiv = document.getElementById("initButtons");
   var newDiv = document.getElementById("newPerson");
@@ -22,6 +23,7 @@ function existingClicked() {
     existingDiv.style.display = "block";
     newDiv.style.display = "none";
     buttonsDiv.style.borderStyle = "hidden solid hidden solid";
+    makeRadioButtons();
 
   } else {
     existingDiv.style.display = "none";
@@ -35,10 +37,31 @@ function createPerson() {
   nameInput = document.getElementById("newName").value.trim()
   if (nameInput !== "") {
     people.push(person = {
-      name: nameInput
+      name: nameInput,
+      gifts: []
     })
   }
   document.getElementById("newName").value='';
   console.log(people)
 }
 
+function makeRadioButtons() {
+  var radioButtonsDiv = document.getElementById("radioButtonsForm");
+  radioButtonsDiv.innerHTML = "";
+  for( i=0; i<people.length; i++) {
+    var radioInput = document.createElement('input');
+    var label = document.createElement('label');    
+    var linebreak = document.createElement('br')
+
+    radioInput.setAttribute('type', 'radio');
+    radioInput.setAttribute('name', 'existingPerson');
+    radioInput.setAttribute('value', people[i].name);
+
+    label.setAttribute("for", people[i].name);
+    label.innerHTML = people[i].name;
+
+    radioButtonsDiv.appendChild(radioInput);  
+    radioButtonsDiv.appendChild(label);
+    radioButtonsDiv.appendChild(linebreak);
+  }
+}
