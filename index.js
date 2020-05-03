@@ -56,6 +56,7 @@ function makeRadioButtons() {
     radioInput.setAttribute('type', 'radio');
     radioInput.setAttribute('name', 'existingPerson');
     radioInput.setAttribute('value', people[i].name);
+    radioInput.setAttribute('onclick', "showExistingTextInput()");
 
     label.setAttribute("for", people[i].name);
     label.innerHTML = people[i].name;
@@ -64,4 +65,9 @@ function makeRadioButtons() {
     radioButtonsDiv.appendChild(label);
     radioButtonsDiv.appendChild(linebreak);
   }
+}
+
+function showExistingTextInput() {
+  var existingText = document.getElementById("existingPersonBox");
+  existingText.style.display = "block";
 }
