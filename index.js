@@ -23,6 +23,7 @@ function existingClicked() {
     existingDiv.style.display = "block";
     newDiv.style.display = "none";
     buttonsDiv.style.borderStyle = "hidden solid hidden solid";
+    existingDiv.style.borderStyle = "hidden solid solid solid";
     makeRadioButtons();
 
   } else {
@@ -65,9 +66,52 @@ function makeRadioButtons() {
     radioButtonsDiv.appendChild(label);
     radioButtonsDiv.appendChild(linebreak);
   }
+  var giftInput = document.createElement('input');
+  var giftInputLabel = document.createElement('label');
+  var linebreak = document.createElement('br')
+
+  giftInput.setAttribute('id', 'giftInput');
+  giftInput.setAttribute('class', 'giftInput');
+
+  giftInputLabel.setAttribute("for", 'giftInput');
+  giftInputLabel.setAttribute("id", "giftInputLabel");
+  giftInputLabel.setAttribute("class", "giftInputLabel");
+  giftInputLabel.innerHTML = "What's the gift? 🎁";
+
+  radioButtonsDiv.appendChild(giftInputLabel);
+  radioButtonsDiv.appendChild(linebreak);
+  radioButtonsDiv.appendChild(giftInput);  
+  $("#giftInput").hide();
+  $("#giftInputLabel").hide();
+
+  var giftInputSubmit = document.createElement('input');
+  
+  giftInputSubmit.setAttribute("type", "submit");
+  giftInputSubmit.setAttribute("id", "giftInputSubmit");
+  giftInputSubmit.setAttribute("value", "submit");
+
+  radioButtonsDiv.appendChild(giftInputSubmit);
+  $("#giftInputSubmit").hide();
+
 }
 
 function showExistingTextInput() {
-  var existingText = document.getElementById("existingPersonBox");
-  existingText.style.display = "block";
+  $("#giftInput").show();
+  $("#giftInputLabel").show();
+  $("#giftInputSubmit").show();
+}
+
+function existingPersonSubmit() {
+  event.preventDefault();
+  giftInput = document.getElementById("giftInput").value.trim();
+  radioPersonInput = $("input[name=existingPerson]:checked").val()
+  console.log(radioPersonInput);
+  console.log(giftInput)
+  if (giftInput !== "") {
+    giftInputIndex = people.findIndex(i => i.name === radioPersonInput);
+    console.log(giftInputIndex)
+    people[giftInputIndex].gifts.push(giftInput);
+    console.log(people);
+  }
+  document.getElementById("giftInput").value='';
 }
