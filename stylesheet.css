@@ -3,7 +3,6 @@ body{
   flex-direction: column;
   align-items: center;
   font-family: 'Open Sans', sans-serif;
-  color-scheme: light dark;
 }
 
 form{
@@ -16,30 +15,24 @@ form{
   border-style: solid solid hidden solid;
 }
 
-.initButtons {
+.initButtonsDiv {
   width: 75%;
   text-align: center;
   border-style: hidden solid solid solid;
 }
 
-.newPerson {
+.newPersonDiv {
   width: 75%;
   text-align: center;
   border-style: hidden solid solid solid;
   display: none;
 }
 
-.existingPersonRadio {
+.existingPersonDiv  {
   width: 75%;
   display: none;
   text-align: center;
-  border-style: hidden solid hidden solid;
-}
-
-.existingPersonBox {
-  width: 75%;
-  background-color: magenta;
-  display: none;
+  border-style: hidden solid solid solid;
 }
 
 .radioWrapper {
@@ -49,6 +42,10 @@ form{
 .giftInputLabel {
   display:inline-block;
   padding-top: 15px;
+}
+
+.randomGift {
+  display: none;
 }
 
 @media (prefers-color-scheme: dark) {

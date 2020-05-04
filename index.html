@@ -18,28 +18,34 @@
       <h3>giftChooser lets you make a list of gifts for a person, and once your ready, you can choose a random one!</h3>
     </div>
 
-    <div class="initButtons" id="initButtons">
-      <button onclick="newClicked()">new</button>
-      <button onclick="existingClicked()">existing</button>
-      <button onclick="randomGift()">choose a gift!</button>
+    <div class="initButtonsDiv" id="initButtonsDiv">
+      <button onclick="initButtonsNewClicked()">new</button>
+      <button onclick="initButtonsExistingClicked()">existing</button>
+      <button onclick="initButtonsGiftClicked()">choose a gift!</button>
     </div>
 
-    <div class="newPerson" id="newPerson">
+    <div class="newPersonDiv" id="newPersonDiv">
       <div>
         <p>Add a person! 🙋‍♂️</p>
       </div>
-      <form onsubmit="createPerson()" style="padding: 2px;">
+      <form onsubmit="newPersonFormSubmit()" style="padding: 2px;">
         <label for="nameName">Name:</label><br>
         <input id="newName">
         <input type="submit" value="submit"">
       </form>
     </div>
 
-    <div class="existingPersonRadio" id="existingPersonRadio">
+    <div class="existingPersonDiv" id="existingPersonDiv">
       <div>
         <p>Choose a person! 🙋‍♀️</p>
       </div>
-      <form class=radioButtonsForm id=radioButtonsForm onsubmit="existingPersonSubmit()"> 
+      <form class=existingPersonForm id=existingPersonForm onsubmit="existingPersonFormSubmit()"> 
+      </form>
+    </div>
+
+    <div class="randomGiftDiv" id="randomGiftDiv">
+      <form class="randomGiftForm" id="randomGiftForm">
+
       </form>
     </div>
 
