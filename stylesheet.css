@@ -35,17 +35,18 @@ form{
   border-style: hidden solid solid solid;
 }
 
-.radioWrapper {
-  display: block;
-}
+
 
 .giftInputLabel {
   display:inline-block;
   padding-top: 15px;
 }
 
-.randomGift {
+.randomGiftDiv {
   display: none;
+  text-align: center;
+  width: 75%;
+  border-style: hidden solid solid solid;
 }
 
 @media (prefers-color-scheme: dark) {

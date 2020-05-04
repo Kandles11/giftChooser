@@ -31,7 +31,7 @@ function initButtonsGiftClicked() {
   $("#existingPersonDiv").hide();
   $("#randomGiftDiv").show();
 
-  randomGiftCreateRadioButtons()
+  randomGiftCreateForm()
 }
 
 //Form Submits
@@ -115,7 +115,7 @@ function existingCreateGiftForm() {
   $("#giftInputSubmit").hide();
 }
 
-function randomGiftCreateRadioButtons() {
+function randomGiftCreateForm() {
   randomGiftForm.innerHTML = ""
   for( i=0; i<people.length; i++) {
     var radioInput = document.createElement('input');
