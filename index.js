@@ -4,9 +4,12 @@ function newClicked() {
   var buttonsDiv = document.getElementById("initButtons");
   var newDiv = document.getElementById("newPerson");
   var existingDiv = document.getElementById("existingPersonRadio");
+  var randomGiftDiv = document.getElementById("randomGift");
+
   if (newDiv.style.display == "none") {
     newDiv.style.display = "block";
     existingDiv.style.display = "none";
+    randomGiftDiv.style.display = "none";
     buttonsDiv.style.borderStyle = "hidden solid hidden solid";
   } else {
     newDiv.style.display = "none";
@@ -114,4 +117,34 @@ function existingPersonSubmit() {
     console.log(people);
   }
   document.getElementById("giftInput").value='';
+}
+
+function randomGiftRadio() {
+  var randomGiftDiv = document.getElementById("randomGift");
+  var randomGiftFormDiv = document.getElementById("randomGiftForm");
+  var newDiv = document.getElementById("newPerson");
+  var existingDiv = document.getElementById("existingPersonRadio");
+
+  randomGiftFormDiv.innerHTML = ""
+  for( i=0; i<people.length; i++) {
+    var radioInput = document.createElement('input');
+    var label = document.createElement('label');    
+    var linebreak = document.createElement('br')
+
+    radioInput.setAttribute('type', 'radio');
+    radioInput.setAttribute('name', 'existingPerson');
+    radioInput.setAttribute('value', people[i].name);
+    radioInput.setAttribute('onclick', "showExistingTextInput()");
+
+    label.setAttribute("for", people[i].name);
+    label.innerHTML = people[i].name;
+
+    randomGiftFormDiv.appendChild(radioInput);  
+    randomGiftFormDiv.appendChild(label);
+    randomGiftFormDiv.appendChild(linebreak);
+  }
+
+  existingDiv.style.display = "none";
+  newDiv.style.display = "none";
+  randomGiftDiv.style.display = "block";
 }

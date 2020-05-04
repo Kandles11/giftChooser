@@ -51,6 +51,10 @@ form{
   padding-top: 15px;
 }
 
+.randomGift {
+  display: none;
+}
+
 @media (prefers-color-scheme: dark) {
   body{
     background-color: black;
