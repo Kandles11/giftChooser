@@ -1,42 +1,41 @@
 var people = []
 
-function newClicked() {
-  var buttonsDiv = document.getElementById("initButtons");
-  var newDiv = document.getElementById("newPerson");
-  var existingDiv = document.getElementById("existingPersonRadio");
-  var randomGiftDiv = document.getElementById("randomGift");
+//Primary Button Functions
+function initButtonsNewClicked() {
+  var buttonsDiv = document.getElementById("initButtonsDiv");
 
-  if (newDiv.style.display == "none") {
-    newDiv.style.display = "block";
-    existingDiv.style.display = "none";
-    randomGiftDiv.style.display = "none";
-    buttonsDiv.style.borderStyle = "hidden solid hidden solid";
-  } else {
-    newDiv.style.display = "none";
-    buttonsDiv.style.borderStyle = "hidden solid solid solid";
-  }
+  $("#newPersonDiv").show();
+  $("#existingPersonDiv").hide();
+  $("#randomGiftDiv").hide();
+  
+  buttonsDiv.style.borderStyle = "hidden solid hidden solid";
 } 
 
-function existingClicked() {
-  var buttonsDiv = document.getElementById("initButtons");
-  var newDiv = document.getElementById("newPerson");
-  var existingDiv = document.getElementById("existingPersonRadio");
+function initButtonsExistingClicked() {
+  var buttonsDiv = document.getElementById("initButtonsDiv");
 
-  if (existingDiv.style.display == "none") {
-    existingDiv.style.display = "block";
-    newDiv.style.display = "none";
-    buttonsDiv.style.borderStyle = "hidden solid hidden solid";
-    existingDiv.style.borderStyle = "hidden solid solid solid";
-    makeRadioButtons();
+  $("#newPersonDiv").hide();
+  $("#existingPersonDiv").show();
+  $("#randomGiftDiv").hide();
 
-  } else {
-    existingDiv.style.display = "none";
-    buttonsDiv.style.borderStyle = "hidden solid solid solid";
+  buttonsDiv.style.borderStyle = "hidden solid hidden solid";
 
-  }
+  existingCreateRadioButtons();
+  existingCreateGiftForm();
 }
 
-function createPerson() {
+function initButtonsGiftClicked() {
+  var randomGiftForm = document.getElementById("randomGiftForm");
+
+  $("#newPersonDiv").hide();
+  $("#existingPersonDiv").hide();
+  $("#randomGiftDiv").show();
+
+  randomGiftCreateRadioButtons()
+}
+
+//Form Submits
+function newPersonFormSubmit() {
   event.preventDefault()
   nameInput = document.getElementById("newName").value.trim()
   if (nameInput !== "") {
@@ -49,62 +48,7 @@ function createPerson() {
   console.log(people)
 }
 
-function makeRadioButtons() {
-  var radioButtonsDiv = document.getElementById("radioButtonsForm");
-  radioButtonsDiv.innerHTML = "";
-  for( i=0; i<people.length; i++) {
-    var radioInput = document.createElement('input');
-    var label = document.createElement('label');    
-    var linebreak = document.createElement('br')
-
-    radioInput.setAttribute('type', 'radio');
-    radioInput.setAttribute('name', 'existingPerson');
-    radioInput.setAttribute('value', people[i].name);
-    radioInput.setAttribute('onclick', "showExistingTextInput()");
-
-    label.setAttribute("for", people[i].name);
-    label.innerHTML = people[i].name;
-
-    radioButtonsDiv.appendChild(radioInput);  
-    radioButtonsDiv.appendChild(label);
-    radioButtonsDiv.appendChild(linebreak);
-  }
-  var giftInput = document.createElement('input');
-  var giftInputLabel = document.createElement('label');
-  var linebreak = document.createElement('br')
-
-  giftInput.setAttribute('id', 'giftInput');
-  giftInput.setAttribute('class', 'giftInput');
-
-  giftInputLabel.setAttribute("for", 'giftInput');
-  giftInputLabel.setAttribute("id", "giftInputLabel");
-  giftInputLabel.setAttribute("class", "giftInputLabel");
-  giftInputLabel.innerHTML = "What's the gift? 🎁";
-
-  radioButtonsDiv.appendChild(giftInputLabel);
-  radioButtonsDiv.appendChild(linebreak);
-  radioButtonsDiv.appendChild(giftInput);  
-  $("#giftInput").hide();
-  $("#giftInputLabel").hide();
-
-  var giftInputSubmit = document.createElement('input');
-  
-  giftInputSubmit.setAttribute("type", "submit");
-  giftInputSubmit.setAttribute("id", "giftInputSubmit");
-  giftInputSubmit.setAttribute("value", "submit");
-
-  radioButtonsDiv.appendChild(giftInputSubmit);
-  $("#giftInputSubmit").hide();
-
-}
-
-function showExistingTextInput() {
-  $("#giftInput").show();
-  $("#giftInputLabel").show();
-  $("#giftInputSubmit").show();
-}
-
-function existingPersonSubmit() {
+function existingPersonFormSubmit() {
   event.preventDefault();
   giftInput = document.getElementById("giftInput").value.trim();
   radioPersonInput = $("input[name=existingPerson]:checked").val()
@@ -119,13 +63,60 @@ function existingPersonSubmit() {
   document.getElementById("giftInput").value='';
 }
 
-function randomGiftRadio() {
-  var randomGiftDiv = document.getElementById("randomGift");
-  var randomGiftFormDiv = document.getElementById("randomGiftForm");
-  var newDiv = document.getElementById("newPerson");
-  var existingDiv = document.getElementById("existingPersonRadio");
+//Create HTML Elements
+function existingCreateRadioButtons() {
+  $("#existingPersonForm").html("");
+  for( i=0; i<people.length; i++) {
+    var radioInput = document.createElement('input');
+    var label = document.createElement('label');    
+    var linebreak = document.createElement('br')
 
-  randomGiftFormDiv.innerHTML = ""
+    radioInput.setAttribute('type', 'radio');
+    radioInput.setAttribute('name', 'existingPerson');
+    radioInput.setAttribute('value', people[i].name);
+    radioInput.setAttribute('onclick', "showExistingGiftForm()");
+
+    label.setAttribute("for", people[i].name);
+    label.innerHTML = people[i].name;
+
+    $("#existingPersonForm").append(radioInput);
+    $("#existingPersonForm").append(label);
+    $("#existingPersonForm").append(linebreak);
+  }
+}
+
+function existingCreateGiftForm() {
+  var radioButtonsDiv = document.getElementById("existingPersonForm");
+  var giftInput = document.createElement('input');
+  var giftInputLabel = document.createElement('label');
+  var linebreak = document.createElement('br')
+  var giftInputSubmit = document.createElement('input');
+
+  giftInput.setAttribute('id', 'giftInput');
+  giftInput.setAttribute('class', 'giftInput');
+
+  giftInputLabel.setAttribute("for", 'giftInput');
+  giftInputLabel.setAttribute("id", "giftInputLabel");
+  giftInputLabel.setAttribute("class", "giftInputLabel");
+  giftInputLabel.innerHTML = "What's the gift? 🎁";
+
+  $("#existingPersonForm").append(giftInputLabel);
+  $("#existingPersonForm").append(linebreak);
+  $("#existingPersonForm").append(giftInput);
+
+  $("#giftInput").hide();
+  $("#giftInputLabel").hide();
+
+  giftInputSubmit.setAttribute("type", "submit");
+  giftInputSubmit.setAttribute("id", "giftInputSubmit");
+  giftInputSubmit.setAttribute("value", "submit");
+
+  $("#existingPersonForm").append(giftInputSubmit);
+  $("#giftInputSubmit").hide();
+}
+
+function randomGiftCreateRadioButtons() {
+  randomGiftForm.innerHTML = ""
   for( i=0; i<people.length; i++) {
     var radioInput = document.createElement('input');
     var label = document.createElement('label');    
@@ -139,12 +130,20 @@ function randomGiftRadio() {
     label.setAttribute("for", people[i].name);
     label.innerHTML = people[i].name;
 
-    randomGiftFormDiv.appendChild(radioInput);  
-    randomGiftFormDiv.appendChild(label);
-    randomGiftFormDiv.appendChild(linebreak);
+    $("#randomGiftForm").append(radioInput);
+    $("#randomGiftForm").append(label);
+    $("#randomGiftForm").append(linebreak);
   }
-
-  existingDiv.style.display = "none";
-  newDiv.style.display = "none";
-  randomGiftDiv.style.display = "block";
 }
+
+//Show GiftForm
+function showExistingGiftForm() {
+  $("#giftInput").show();
+  $("#giftInputLabel").show();
+  $("#giftInputSubmit").show();
+}
+
+
+
+
+
