@@ -19,6 +19,7 @@
     </div>
 
     <div class="initButtonsDiv" id="initButtonsDiv">
+      <a href="/login.html">test</a>
       <button onclick="initButtonsNewClicked()">new</button>
       <button onclick="initButtonsExistingClicked()">existing</button>
       <button onclick="initButtonsGiftClicked()">choose a gift!</button>
@@ -53,6 +54,28 @@
 
       </div>
     </div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
 
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyA6abA0BdDJJkOdL05l5a1CxDk5OfGVdcQ",
+    authDomain: "giftchooser-ab311.firebaseapp.com",
+    databaseURL: "https://giftchooser-ab311.firebaseio.com",
+    projectId: "giftchooser-ab311",
+    storageBucket: "giftchooser-ab311.appspot.com",
+    messagingSenderId: "813308833417",
+    appId: "1:813308833417:web:9d188885bdad5f8c8ce058",
+    measurementId: "G-X1D2BN17MW"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
   </body>
 </html>
